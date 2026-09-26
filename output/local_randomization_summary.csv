@@ -1,0 +1,8 @@
+metric,value
+input_rows_after_geometry,247640.0
+local_randomization_rows,16619.0
+treated_home_runs,14126.0
+control_non_home_runs,2493.0
+window_ft,5.0
+steepness_factor,1.0
+missing_running_variable_rows,0.0

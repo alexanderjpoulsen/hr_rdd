@@ -3,7 +3,7 @@
 ------------------
 Constructs the running variable for the HR Fuzzy RDD using trig geometry:
 
-    running_var = (hit_distance_sc − fence_dist_ft) × tan(launch_angle) − fence_height_ft
+    running_var = (hit_distance_sc − fence_dist_ft) × tan(1.1 × launch_angle) − fence_height_ft
 
 Derivation
 ----------
@@ -25,11 +25,10 @@ This formula works uniformly for both cases:
   - Ball lands short of fence (hit_distance_sc < fence_dist_ft): h_at_fence < 0,
     making running_var strongly negative.
 
-Assumption note: The descent-equals-launch-angle assumption is exact for a
-symmetric parabola (vacuum).  With drag and Magnus lift the descent angle is
-~5–15% steeper than the launch angle for typical HR trajectories.  A flag
---steepness-factor (default 1.0) allows applying a multiplicative correction
-to tan(launch_angle) to account for this if needed.
+Assumption note: The descent angle is modeled as 10% steeper than the launch
+angle.  This is a reduced-form approximation to drag and Magnus effects; the
+repository does not implement a full RK45 trajectory solver.  The
+--steepness-factor flag allows sensitivity analysis around this default.
 
 Pipeline
 --------
@@ -43,7 +42,7 @@ Pipeline
 Usage
 -----
     python src/02_prepare_data.py
-    python src/02_prepare_data.py --steepness-factor 1.1   # 10% steeper descent
+    python src/02_prepare_data.py --steepness-factor 1.0   # symmetric sensitivity
 """
 
 import argparse
@@ -146,7 +145,7 @@ def add_park_features(df: pd.DataFrame, park_df: pd.DataFrame) -> pd.DataFrame:
 
 def compute_running_variable(
     df: pd.DataFrame,
-    steepness_factor: float = 1.0,
+    steepness_factor: float = 1.1,
 ) -> pd.DataFrame:
     """
     Add h_at_fence_ft and running_var columns.
@@ -159,7 +158,7 @@ def compute_running_variable(
     steepness_factor : multiplier on the descent angle to account for the ball
         descending more steeply than it was launched (due to drag).
         1.0 = symmetric assumption (launch angle = descent angle).
-        1.1 = descent 10% steeper than launch.
+        1.1 = descent 10% steeper than launch (default).
     """
     df = df.copy()
 
@@ -241,7 +240,7 @@ def main():
     parser.add_argument("--output",      type=Path, default=PROCESSED_DIR / "rdd_data.parquet")
     parser.add_argument("--park-dims",   type=Path, default=ROOT / "data" / "park_dimensions_geom.csv")
     parser.add_argument(
-        "--steepness-factor", type=float, default=1.0,
+        "--steepness-factor", type=float, default=1.1,
         help="Multiplier on launch angle for descent (1.0 = symmetric, 1.1 = 10%% steeper).",
     )
     args = parser.parse_args()
@@ -282,7 +281,7 @@ def main():
     sf = args.steepness_factor
     label = f"steepness_factor={sf:.2f}"
     print(f"\nComputing running variable ({label}) ...")
-    print("  Formula: (hit_distance_sc − fence_dist) × tan(launch_angle) − fence_height")
+    print("  Formula: (hit_distance_sc − fence_dist) × tan(1.1 × launch_angle) − fence_height")
     df = compute_running_variable(df, steepness_factor=sf)
 
     n_valid = df["running_var"].notna().sum()

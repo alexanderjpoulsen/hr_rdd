@@ -80,8 +80,10 @@ def construct_running_variable(input_path: Path, park_dims_path: Path,
     df = pd.read_parquet(input_path)
     # Reuse an analysis-ready file when supplied. This avoids repeating the
     # expensive row-wise park lookup for sensitivity analyses.
-    if "running_var" in df.columns:
-        return df
+    if "running_var" in df.columns and "fence_dist_ft" in df.columns:
+        return prepare.compute_running_variable(
+            df, steepness_factor=steepness_factor,
+        )
     required = [
         "launch_angle", "hit_distance_sc", "hc_x", "hc_y", "home_team",
         "game_year", "events",
@@ -131,6 +133,8 @@ def numeric_balance(df: pd.DataFrame) -> pd.DataFrame:
             continue
         pooled_sd = np.sqrt((t.var(ddof=1) + c.var(ddof=1)) / 2)
         smd = (t.mean() - c.mean()) / pooled_sd if pooled_sd > 0 else np.nan
+        difference_se = np.sqrt(t.var(ddof=1) / len(t) + c.var(ddof=1) / len(c))
+        smd_se = difference_se / pooled_sd if pooled_sd > 0 else np.nan
         test = stats.ttest_ind(t, c, equal_var=False, nan_policy="omit")
         rows.append({
             "covariate": covariate,
@@ -139,7 +143,11 @@ def numeric_balance(df: pd.DataFrame) -> pd.DataFrame:
             "treated_mean": t.mean(),
             "control_mean": c.mean(),
             "difference": t.mean() - c.mean(),
+            "difference_se": difference_se,
             "standardized_mean_difference": smd,
+            "standardized_mean_difference_se": smd_se,
+            "smd_ci_lower": smd - 1.96 * smd_se if np.isfinite(smd_se) else np.nan,
+            "smd_ci_upper": smd + 1.96 * smd_se if np.isfinite(smd_se) else np.nan,
             "welch_t": test.statistic,
             "welch_p": test.pvalue,
         })
@@ -183,13 +191,18 @@ def write_plot(balance: pd.DataFrame, path: Path) -> None:
     plot_df = plot_df.sort_values("standardized_mean_difference")
     fig, ax = plt.subplots(figsize=(9, max(4, len(plot_df) * 0.32)))
     y = np.arange(len(plot_df))
-    ax.scatter(plot_df["standardized_mean_difference"], y, color="#2c3e50", s=35)
+    ax.errorbar(
+        plot_df["standardized_mean_difference"], y,
+        xerr=1.96 * plot_df["standardized_mean_difference_se"],
+        fmt="o", color="#2c3e50", ecolor="#7f8c8d", elinewidth=1,
+        capsize=3, markersize=5,
+    )
     ax.axvline(0, color="#7f8c8d", lw=1)
     ax.axvline(-0.1, color="#bdc3c7", lw=1, ls="--")
     ax.axvline(0.1, color="#bdc3c7", lw=1, ls="--")
     ax.set_yticks(y)
     ax.set_yticklabels(plot_df["covariate"])
-    ax.set_xlabel("Standardized Mean Difference: Home Run minus Control")
+    ax.set_xlabel("Standardized Mean Difference: Home Run minus Control (95% CI)")
     ax.set_title("Local Randomization Balance: Numeric Covariates")
     fig.tight_layout()
     fig.savefig(path, dpi=150, bbox_inches="tight")
@@ -202,7 +215,7 @@ def main() -> None:
     parser.add_argument("--park-dims", type=Path, default=ROOT / "data" / "park_dimensions_geom.csv")
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--window", type=float, default=5.0)
-    parser.add_argument("--steepness-factor", type=float, default=1.0)
+    parser.add_argument("--steepness-factor", type=float, default=1.1)
     args = parser.parse_args()
 
     args.output_dir.mkdir(parents=True, exist_ok=True)

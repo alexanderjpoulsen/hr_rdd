@@ -46,6 +46,13 @@ zero is large but not perfectly sharp, making this a Fuzzy RDD.
 
 ## Physics Model
 
+The current production running variable uses a reduced-form trajectory
+approximation rather than a full Alan Nathan RK45 trajectory integration. The
+ball's descending angle is set to 1.1 times its launch angle, reflecting a
+rough 10% steepening from drag and Magnus effects. The multiplier is exposed as
+`--steepness-factor` for sensitivity analysis; `1.0` reproduces the symmetric
+vacuum approximation.
+
 We use Alan Nathan's trajectory model (University of Illinois), integrating the equations
 of motion with drag and Magnus (backspin) lift forces via RK45 ODE integration:
 

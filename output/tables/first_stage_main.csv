@@ -1,0 +1,2 @@
+method,bandwidth_left_ft,bandwidth_right_ft,tau_pp,se_conventional_pp,se_robust_pp,ci_lower_pp,ci_upper_pp,p_value_robust,n_left,n_right
+rdrobust (CCT),3.2989284018362905,3.2989284018362905,0.31523068035451685,1.2881251235051228,1.3367106784130376,-1.6686596646382639,3.5711499102410476,0.4766931357665378,97633,29464

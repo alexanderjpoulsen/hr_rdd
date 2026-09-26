@@ -1,0 +1,329 @@
+team,park_name,year_start,year_end,spray_angle_left_deg,spray_angle_right_deg,fence_dist_ft,fence_height_ft,notes
+# ─── NOTES ON COORDINATE CONVENTION ────────────────────────────────────────
+# spray_angle is measured from center field (0°), in degrees.
+# Negative = left field side, Positive = right field side.
+# Each row covers one fence segment from spray_angle_left_deg to spray_angle_right_deg.
+# fence_dist_ft = horizontal distance from home plate to the fence (along the spray angle).
+# fence_height_ft = height of the fence top above the playing field surface.
+# year_start / year_end = inclusive season years for which these dimensions apply.
+# Sources: Fangraphs "Complete Outfield Dimensions" (2015); GeomMLBStadiums R package;
+#          Andrew Clem stadium diagrams (andrewclem.com); official team publications;
+#          Baseball Reference park factor reference pages.
+# ────────────────────────────────────────────────────────────────────────────
+#
+# Spray angle bins are chosen to match known dimension change-points (corners,
+# bullpen openings, etc.) at each park. Intermediate distances are linearly
+# interpolated in 02_prepare_data.py.
+# ────────────────────────────────────────────────────────────────────────────
+#
+# ═══ Arizona Diamondbacks — Chase Field (Phoenix) ════════════════════════════
+ARI,Chase Field,2015,9999,-45,-35,374,7.5,Left field corner
+ARI,Chase Field,2015,9999,-35,-20,374,7.5,Left field
+ARI,Chase Field,2015,9999,-20,-10,413,7.5,Left center
+ARI,Chase Field,2015,9999,-10,10,407,7.5,Center field
+ARI,Chase Field,2015,9999,10,20,413,7.5,Right center
+ARI,Chase Field,2015,9999,20,35,376,7.5,Right field
+ARI,Chase Field,2015,9999,35,45,334,7.5,Right field corner
+#
+# ═══ Atlanta Braves — SunTrust/Truist Park (Cumberland, GA) ═════════════════
+ATL,SunTrust Park,2017,9999,-45,-35,335,8,Left field corner
+ATL,SunTrust Park,2017,9999,-35,-20,380,8,Left field
+ATL,SunTrust Park,2017,9999,-20,-10,400,8,Left center
+ATL,SunTrust Park,2017,9999,-10,10,400,8,Center field
+ATL,SunTrust Park,2017,9999,10,20,390,8,Right center
+ATL,SunTrust Park,2017,9999,20,35,375,8,Right field
+ATL,SunTrust Park,2017,9999,35,45,325,8,Right field corner
+# Turner Field (2015-2016)
+ATL,Turner Field,2015,2016,-45,-35,335,8,Left field corner
+ATL,Turner Field,2015,2016,-35,-20,380,8,Left field
+ATL,Turner Field,2015,2016,-20,-10,401,8,Left center
+ATL,Turner Field,2015,2016,-10,10,401,8,Center field
+ATL,Turner Field,2015,2016,10,20,390,8,Right center
+ATL,Turner Field,2015,2016,20,35,375,8,Right field
+ATL,Turner Field,2015,2016,35,45,330,8,Right field corner
+#
+# ═══ Baltimore Orioles — Camden Yards ════════════════════════════════════════
+BAL,Camden Yards,2015,9999,-45,-35,333,7,Left field corner
+BAL,Camden Yards,2015,9999,-35,-20,364,7,Left field
+BAL,Camden Yards,2015,9999,-20,-10,410,7,Left center
+BAL,Camden Yards,2015,9999,-10,10,400,7,Center field
+BAL,Camden Yards,2015,9999,10,20,373,7,Right center
+BAL,Camden Yards,2015,9999,20,35,350,7,Right field
+BAL,Camden Yards,2015,9999,35,45,318,7,Right field corner
+#
+# ═══ Boston Red Sox — Fenway Park ════════════════════════════════════════════
+# Left field: Green Monster 37 ft tall, 310 ft down the line
+# The monster extends from ~-45° to about -30° spray angle
+BOS,Fenway Park,2015,9999,-45,-42,310,37,Left field foul line / Monster base
+BOS,Fenway Park,2015,9999,-42,-35,315,37,Green Monster (foul-pole side)
+BOS,Fenway Park,2015,9999,-35,-28,325,37,Green Monster (center side)
+BOS,Fenway Park,2015,9999,-28,-20,379,17,Green Monster ends / triangle area
+BOS,Fenway Park,2015,9999,-20,-10,420,17,Deep left center triangle
+BOS,Fenway Park,2015,9999,-10,10,390,17,Center field (CF triangle)
+BOS,Fenway Park,2015,9999,10,20,420,5,Right center
+BOS,Fenway Park,2015,9999,20,35,380,5,Right field
+BOS,Fenway Park,2015,9999,35,45,302,3,Right field corner (Pesky Pole)
+#
+# ═══ Chicago Cubs — Wrigley Field ════════════════════════════════════════════
+# Ivy-covered brick wall 11.5 ft; basket added in 2017 adds ~1 ft effective height
+CHC,Wrigley Field,2015,2016,-45,-35,355,11.5,Left field corner
+CHC,Wrigley Field,2015,2016,-35,-20,368,11.5,Left field
+CHC,Wrigley Field,2015,2016,-20,-10,400,11.5,Left center
+CHC,Wrigley Field,2015,2016,-10,10,400,11.5,Center field
+CHC,Wrigley Field,2015,2016,10,20,368,11.5,Right center
+CHC,Wrigley Field,2015,2016,20,35,353,11.5,Right field
+CHC,Wrigley Field,2015,2016,35,45,353,11.5,Right field corner
+CHC,Wrigley Field,2017,9999,-45,-35,355,12,Left field corner (basket era)
+CHC,Wrigley Field,2017,9999,-35,-20,368,12,Left field (basket era)
+CHC,Wrigley Field,2017,9999,-20,-10,400,12,Left center (basket era)
+CHC,Wrigley Field,2017,9999,-10,10,400,12,Center field (basket era)
+CHC,Wrigley Field,2017,9999,10,20,368,12,Right center (basket era)
+CHC,Wrigley Field,2017,9999,20,35,353,12,Right field (basket era)
+CHC,Wrigley Field,2017,9999,35,45,353,12,Right field corner (basket era)
+#
+# ═══ Chicago White Sox — Guaranteed Rate Field ═══════════════════════════════
+CWS,Guaranteed Rate Field,2015,9999,-45,-35,330,8,Left field corner
+CWS,Guaranteed Rate Field,2015,9999,-35,-20,375,8,Left field
+CWS,Guaranteed Rate Field,2015,9999,-20,-10,400,8,Left center
+CWS,Guaranteed Rate Field,2015,9999,-10,10,400,8,Center field
+CWS,Guaranteed Rate Field,2015,9999,10,20,375,8,Right center
+CWS,Guaranteed Rate Field,2015,9999,20,35,375,8,Right field
+CWS,Guaranteed Rate Field,2015,9999,35,45,335,8,Right field corner
+#
+# ═══ Cincinnati Reds — Great American Ball Park ══════════════════════════════
+CIN,Great American Ball Park,2015,9999,-45,-35,328,12,Left field corner
+CIN,Great American Ball Park,2015,9999,-35,-20,370,12,Left field
+CIN,Great American Ball Park,2015,9999,-20,-10,404,12,Left center
+CIN,Great American Ball Park,2015,9999,-10,10,404,12,Center field
+CIN,Great American Ball Park,2015,9999,10,20,370,12,Right center
+CIN,Great American Ball Park,2015,9999,20,35,325,12,Right field
+CIN,Great American Ball Park,2015,9999,35,45,325,9,Right field corner
+#
+# ═══ Cleveland Guardians — Progressive Field ════════════════════════════════
+CLE,Progressive Field,2015,9999,-45,-35,325,19,Left field corner (19-ft wall)
+CLE,Progressive Field,2015,9999,-35,-20,370,8,Left field
+CLE,Progressive Field,2015,9999,-20,-10,405,8,Left center
+CLE,Progressive Field,2015,9999,-10,10,405,8,Center field
+CLE,Progressive Field,2015,9999,10,20,375,8,Right center
+CLE,Progressive Field,2015,9999,20,35,370,8,Right field
+CLE,Progressive Field,2015,9999,35,45,325,8,Right field corner
+#
+# ═══ Colorado Rockies — Coors Field ══════════════════════════════════════════
+# Altitude 5200 ft — air density correction critical here
+COL,Coors Field,2015,9999,-45,-35,347,8,Left field corner
+COL,Coors Field,2015,9999,-35,-20,390,8,Left field
+COL,Coors Field,2015,9999,-20,-10,415,8,Left center
+COL,Coors Field,2015,9999,-10,10,415,8,Center field (deep)
+COL,Coors Field,2015,9999,10,20,375,8,Right center
+COL,Coors Field,2015,9999,20,35,375,8,Right field
+COL,Coors Field,2015,9999,35,45,350,8,Right field corner
+#
+# ═══ Detroit Tigers — Comerica Park ══════════════════════════════════════════
+DET,Comerica Park,2015,9999,-45,-35,345,8,Left field corner
+DET,Comerica Park,2015,9999,-35,-20,370,8,Left field
+DET,Comerica Park,2015,9999,-20,-10,395,8,Left center
+DET,Comerica Park,2015,9999,-10,10,420,8,Center field (very deep)
+DET,Comerica Park,2015,9999,10,20,395,8,Right center
+DET,Comerica Park,2015,9999,20,35,370,8,Right field
+DET,Comerica Park,2015,9999,35,45,330,8,Right field corner
+#
+# ═══ Houston Astros — Minute Maid Park ═══════════════════════════════════════
+# Tal's Hill (CF slope) removed after 2016 season — no effect on fence height
+HOU,Minute Maid Park,2015,9999,-45,-35,315,21,Left field corner (Crawford Boxes)
+HOU,Minute Maid Park,2015,9999,-35,-28,326,21,Crawford Boxes (upper)
+HOU,Minute Maid Park,2015,9999,-28,-20,362,8,Left field
+HOU,Minute Maid Park,2015,9999,-20,-10,404,8,Left center
+HOU,Minute Maid Park,2015,9999,-10,10,435,8,Center field
+HOU,Minute Maid Park,2015,9999,10,20,373,8,Right center
+HOU,Minute Maid Park,2015,9999,20,35,375,8,Right field
+HOU,Minute Maid Park,2015,9999,35,45,326,9,Right field corner
+#
+# ═══ Kansas City Royals — Kauffman Stadium ═══════════════════════════════════
+KC,Kauffman Stadium,2015,9999,-45,-35,330,8,Left field corner
+KC,Kauffman Stadium,2015,9999,-35,-20,375,8,Left field
+KC,Kauffman Stadium,2015,9999,-20,-10,410,8,Left center
+KC,Kauffman Stadium,2015,9999,-10,10,410,8,Center field
+KC,Kauffman Stadium,2015,9999,10,20,387,8,Right center
+KC,Kauffman Stadium,2015,9999,20,35,375,8,Right field
+KC,Kauffman Stadium,2015,9999,35,45,330,8,Right field corner
+#
+# ═══ Los Angeles Angels — Angel Stadium ══════════════════════════════════════
+LAA,Angel Stadium,2015,9999,-45,-35,330,8,Left field corner
+LAA,Angel Stadium,2015,9999,-35,-20,370,8,Left field
+LAA,Angel Stadium,2015,9999,-20,-10,396,8,Left center
+LAA,Angel Stadium,2015,9999,-10,10,396,8,Center field
+LAA,Angel Stadium,2015,9999,10,20,370,8,Right center
+LAA,Angel Stadium,2015,9999,20,35,365,8,Right field
+LAA,Angel Stadium,2015,9999,35,45,330,8,Right field corner
+#
+# ═══ Los Angeles Dodgers — Dodger Stadium ════════════════════════════════════
+LAD,Dodger Stadium,2015,9999,-45,-35,330,4,Left field corner
+LAD,Dodger Stadium,2015,9999,-35,-20,375,4,Left field
+LAD,Dodger Stadium,2015,9999,-20,-10,395,4,Left center
+LAD,Dodger Stadium,2015,9999,-10,10,395,4,Center field
+LAD,Dodger Stadium,2015,9999,10,20,375,4,Right center
+LAD,Dodger Stadium,2015,9999,20,35,375,4,Right field
+LAD,Dodger Stadium,2015,9999,35,45,330,4,Right field corner
+#
+# ═══ Miami Marlins — loanDepot Park / Marlins Park ═══════════════════════════
+MIA,loanDepot Park,2015,9999,-45,-35,344,8,Left field corner
+MIA,loanDepot Park,2015,9999,-35,-20,386,8,Left field
+MIA,loanDepot Park,2015,9999,-20,-10,418,8,Left center
+MIA,loanDepot Park,2015,9999,-10,10,418,8,Center field
+MIA,loanDepot Park,2015,9999,10,20,386,8,Right center
+MIA,loanDepot Park,2015,9999,20,35,392,8,Right field
+MIA,loanDepot Park,2015,9999,35,45,335,8,Right field corner
+#
+# ═══ Milwaukee Brewers — American Family Field ════════════════════════════════
+MIL,American Family Field,2015,9999,-45,-35,342,8,Left field corner
+MIL,American Family Field,2015,9999,-35,-20,371,8,Left field
+MIL,American Family Field,2015,9999,-20,-10,400,8,Left center
+MIL,American Family Field,2015,9999,-10,10,400,8,Center field
+MIL,American Family Field,2015,9999,10,20,374,8,Right center
+MIL,American Family Field,2015,9999,20,35,374,8,Right field
+MIL,American Family Field,2015,9999,35,45,345,8,Right field corner
+#
+# ═══ Minnesota Twins — Target Field ══════════════════════════════════════════
+MIN,Target Field,2015,9999,-45,-35,339,8,Left field corner
+MIN,Target Field,2015,9999,-35,-20,377,8,Left field
+MIN,Target Field,2015,9999,-20,-10,411,8,Left center
+MIN,Target Field,2015,9999,-10,10,404,8,Center field
+MIN,Target Field,2015,9999,10,20,373,8,Right center
+MIN,Target Field,2015,9999,20,35,365,8,Right field
+MIN,Target Field,2015,9999,35,45,328,8,Right field corner
+#
+# ═══ New York Mets — Citi Field ══════════════════════════════════════════════
+NYM,Citi Field,2015,9999,-45,-35,335,8,Left field corner
+NYM,Citi Field,2015,9999,-35,-20,379,8,Left field
+NYM,Citi Field,2015,9999,-20,-10,408,8,Left center
+NYM,Citi Field,2015,9999,-10,10,408,8,Center field
+NYM,Citi Field,2015,9999,10,20,383,8,Right center
+NYM,Citi Field,2015,9999,20,35,375,8,Right field
+NYM,Citi Field,2015,9999,35,45,330,8,Right field corner
+#
+# ═══ New York Yankees — Yankee Stadium ═══════════════════════════════════════
+NYY,Yankee Stadium,2015,9999,-45,-35,318,8,Left field corner (short porch)
+NYY,Yankee Stadium,2015,9999,-35,-28,318,8,Left field
+NYY,Yankee Stadium,2015,9999,-28,-20,399,8,Left center
+NYY,Yankee Stadium,2015,9999,-20,-10,399,8,Center field
+NYY,Yankee Stadium,2015,9999,-10,10,408,8,Center field
+NYY,Yankee Stadium,2015,9999,10,20,385,8,Right center
+NYY,Yankee Stadium,2015,9999,20,35,353,8,Right field
+NYY,Yankee Stadium,2015,9999,35,45,314,8,Right field corner (short porch)
+#
+# ═══ Oakland Athletics — Oakland Coliseum ════════════════════════════════════
+OAK,Oakland Coliseum,2015,2024,-45,-35,330,8,Left field corner
+OAK,Oakland Coliseum,2015,2024,-35,-20,372,8,Left field
+OAK,Oakland Coliseum,2015,2024,-20,-10,400,8,Left center
+OAK,Oakland Coliseum,2015,2024,-10,10,400,8,Center field
+OAK,Oakland Coliseum,2015,2024,10,20,362,8,Right center
+OAK,Oakland Coliseum,2015,2024,20,35,372,8,Right field
+OAK,Oakland Coliseum,2015,2024,35,45,330,8,Right field corner
+#
+# ═══ Philadelphia Phillies — Citizens Bank Park ═══════════════════════════════
+PHI,Citizens Bank Park,2015,9999,-45,-35,330,8,Left field corner
+PHI,Citizens Bank Park,2015,9999,-35,-20,374,8,Left field
+PHI,Citizens Bank Park,2015,9999,-20,-10,409,8,Left center
+PHI,Citizens Bank Park,2015,9999,-10,10,401,8,Center field
+PHI,Citizens Bank Park,2015,9999,10,20,374,8,Right center
+PHI,Citizens Bank Park,2015,9999,20,35,369,8,Right field
+PHI,Citizens Bank Park,2015,9999,35,45,330,8,Right field corner
+#
+# ═══ Pittsburgh Pirates — PNC Park ═══════════════════════════════════════════
+PIT,PNC Park,2015,9999,-45,-35,325,6,Left field corner
+PIT,PNC Park,2015,9999,-35,-20,383,6,Left field
+PIT,PNC Park,2015,9999,-20,-10,410,6,Left center
+PIT,PNC Park,2015,9999,-10,10,399,10,Center field
+PIT,PNC Park,2015,9999,10,20,375,6,Right center
+PIT,PNC Park,2015,9999,20,35,320,6,Right field
+PIT,PNC Park,2015,9999,35,45,320,6,Right field corner
+#
+# ═══ San Diego Padres — Petco Park ═══════════════════════════════════════════
+SD,Petco Park,2015,9999,-45,-35,336,8,Left field corner
+SD,Petco Park,2015,9999,-35,-20,367,8,Left field
+SD,Petco Park,2015,9999,-20,-10,396,8,Left center
+SD,Petco Park,2015,9999,-10,10,396,8,Center field
+SD,Petco Park,2015,9999,10,20,382,8,Right center
+SD,Petco Park,2015,9999,20,35,381,8,Right field
+SD,Petco Park,2015,9999,35,45,322,8,Right field corner
+#
+# ═══ San Francisco Giants — Oracle Park ══════════════════════════════════════
+# McCovey Cove (right field) — short porch 309 ft, 25 ft wall
+SF,Oracle Park,2015,9999,-45,-35,339,8,Left field corner
+SF,Oracle Park,2015,9999,-35,-20,382,8,Left field
+SF,Oracle Park,2015,9999,-20,-10,399,8,Left center
+SF,Oracle Park,2015,9999,-10,10,399,8,Center field
+SF,Oracle Park,2015,9999,10,20,391,8,Right center
+SF,Oracle Park,2015,9999,20,35,365,25,Right field wall (high wall)
+SF,Oracle Park,2015,9999,35,45,309,25,Right field corner (McCovey Cove)
+#
+# ═══ Seattle Mariners — T-Mobile Park ════════════════════════════════════════
+SEA,T-Mobile Park,2015,9999,-45,-35,331,8,Left field corner
+SEA,T-Mobile Park,2015,9999,-35,-20,378,8,Left field
+SEA,T-Mobile Park,2015,9999,-20,-10,405,8,Left center
+SEA,T-Mobile Park,2015,9999,-10,10,405,8,Center field
+SEA,T-Mobile Park,2015,9999,10,20,381,8,Right center
+SEA,T-Mobile Park,2015,9999,20,35,381,8,Right field
+SEA,T-Mobile Park,2015,9999,35,45,326,8,Right field corner
+#
+# ═══ St. Louis Cardinals — Busch Stadium ════════════════════════════════════
+STL,Busch Stadium,2015,9999,-45,-35,336,8,Left field corner
+STL,Busch Stadium,2015,9999,-35,-20,375,8,Left field
+STL,Busch Stadium,2015,9999,-20,-10,400,8,Left center
+STL,Busch Stadium,2015,9999,-10,10,400,8,Center field
+STL,Busch Stadium,2015,9999,10,20,375,8,Right center
+STL,Busch Stadium,2015,9999,20,35,375,8,Right field
+STL,Busch Stadium,2015,9999,35,45,335,8,Right field corner
+#
+# ═══ Tampa Bay Rays — Tropicana Field ════════════════════════════════════════
+TB,Tropicana Field,2015,9999,-45,-35,315,11.17,Left field corner (catwalk park)
+TB,Tropicana Field,2015,9999,-35,-20,370,8,Left field
+TB,Tropicana Field,2015,9999,-20,-10,404,8,Left center
+TB,Tropicana Field,2015,9999,-10,10,404,8,Center field
+TB,Tropicana Field,2015,9999,10,20,370,8,Right center
+TB,Tropicana Field,2015,9999,20,35,322,8,Right field
+TB,Tropicana Field,2015,9999,35,45,322,8,Right field corner
+#
+# ═══ Texas Rangers — Globe Life Field (2020+) and Globe Life Park (2015-2019) 
+TEX,Globe Life Park,2015,2019,-45,-35,330,8,Left field corner
+TEX,Globe Life Park,2015,2019,-35,-20,390,8,Left field
+TEX,Globe Life Park,2015,2019,-20,-10,400,8,Left center
+TEX,Globe Life Park,2015,2019,-10,10,400,8,Center field
+TEX,Globe Life Park,2015,2019,10,20,381,8,Right center
+TEX,Globe Life Park,2015,2019,20,35,381,8,Right field
+TEX,Globe Life Park,2015,2019,35,45,325,8,Right field corner
+TEX,Globe Life Field,2020,9999,-45,-35,329,8,Left field corner
+TEX,Globe Life Field,2020,9999,-35,-20,374,8,Left field
+TEX,Globe Life Field,2020,9999,-20,-10,407,8,Left center
+TEX,Globe Life Field,2020,9999,-10,10,407,8,Center field
+TEX,Globe Life Field,2020,9999,10,20,374,8,Right center
+TEX,Globe Life Field,2020,9999,20,35,374,8,Right field
+TEX,Globe Life Field,2020,9999,35,45,326,8,Right field corner
+#
+# ═══ Toronto Blue Jays — Rogers Centre ═══════════════════════════════════════
+TOR,Rogers Centre,2015,9999,-45,-35,328,10,Left field corner
+TOR,Rogers Centre,2015,9999,-35,-20,375,10,Left field
+TOR,Rogers Centre,2015,9999,-20,-10,400,10,Left center
+TOR,Rogers Centre,2015,9999,-10,10,400,10,Center field
+TOR,Rogers Centre,2015,9999,10,20,375,10,Right center
+TOR,Rogers Centre,2015,9999,20,35,375,10,Right field
+TOR,Rogers Centre,2015,9999,35,45,328,10,Right field corner
+#
+# ═══ Washington Nationals — Nationals Park ════════════════════════════════════
+WSH,Nationals Park,2015,9999,-45,-35,336,8,Left field corner
+WSH,Nationals Park,2015,9999,-35,-20,377,8,Left field
+WSH,Nationals Park,2015,9999,-20,-10,402,8,Left center
+WSH,Nationals Park,2015,9999,-10,10,402,8,Center field
+WSH,Nationals Park,2015,9999,10,20,370,8,Right center
+WSH,Nationals Park,2015,9999,20,35,370,8,Right field
+WSH,Nationals Park,2015,9999,35,45,335,8,Right field corner
+#
+# ═══ Stadium elevations (feet above sea level) ═══════════════════════════════
+# Used by 02_prepare_data.py for air density calculation.
+# Stored separately in code; listed here for reference:
+#   ARI  1086   ATL   1050   BAL    33   BOS    19   CHC   594
+#   CWS   595   CIN   489   CLE   653   COL  5200   DET   585
+#   HOU    43   KC    740   LAA   150   LAD   515   MIA     6
+#   MIL   635   MIN   841   NYM    25   NYY    25   OAK    25
+#   PHI    20   PIT   730   SD     17   SF      0   SEA    35
+#   STL   465   TB     6   TEX   532   TOR    300  WSH    25

@@ -1,0 +1,24 @@
+# HR RDD Project — Python dependencies
+# Install with:  pip install -r requirements.txt
+#
+# Tested on Python 3.11+
+
+# ── Data download ────────────────────────────────────────────────────────────
+pybaseball==2.2.7          # Statcast data via Baseball Savant
+
+# ── Data / numerics ──────────────────────────────────────────────────────────
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.13.0
+pyarrow==16.1.0            # parquet read/write
+
+# ── RDD estimation ───────────────────────────────────────────────────────────
+rdrobust==1.2.1            # CCT bandwidth selection + RD estimation
+rddensity==2.4             # McCrary density test (rddensity package)
+
+# ── Regression / stats ───────────────────────────────────────────────────────
+statsmodels==0.14.2
+
+# ── Plotting ─────────────────────────────────────────────────────────────────
+matplotlib==3.9.0
+seaborn==0.13.2

@@ -2,3 +2,5 @@
 __pycache__/
 *.py[cod]
 
+# Large raw full-game statcast downloads (re-downloadable via 10_download_full.py)
+data/raw/statcast_full_*.parquet

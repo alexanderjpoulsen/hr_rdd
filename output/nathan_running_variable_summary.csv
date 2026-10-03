@@ -1,0 +1,94 @@
+sample,metric,value
+All fly balls,n_within_pm_1ft,2726.0
+All fly balls,hr_share_within_pm_1ft,0.0685986793837124
+All fly balls,hr_share_left_within_pm_1ft,0.060369318181818184
+All fly balls,hr_share_right_within_pm_1ft,0.07738998482549317
+All fly balls,n_within_pm_2ft,5486.0
+All fly balls,hr_share_within_pm_2ft,0.06689755741888444
+All fly balls,hr_share_left_within_pm_2ft,0.056054617319439455
+All fly balls,hr_share_right_within_pm_2ft,0.0780614132445431
+All fly balls,n_within_pm_5ft,13804.0
+All fly balls,hr_share_within_pm_5ft,0.06918284555201391
+All fly balls,hr_share_left_within_pm_5ft,0.04691142191142191
+All fly balls,hr_share_right_within_pm_5ft,0.09121037463976946
+All fly balls,n_within_pm_10ft,28024.0
+All fly balls,hr_share_within_pm_10ft,0.07454324864401941
+All fly balls,hr_share_left_within_pm_10ft,0.033427189372608475
+All fly balls,hr_share_right_within_pm_10ft,0.11472518168348268
+All fly balls,n_within_pm_20ft,58000.0
+All fly balls,hr_share_within_pm_20ft,0.09427586206896552
+All fly balls,hr_share_left_within_pm_20ft,0.019232750626781606
+All fly balls,hr_share_right_within_pm_20ft,0.16992694664681646
+All fly balls,n_observations,247640.0
+All fly balls,n_home_runs,40149.0
+All fly balls,home_run_launch_angle_cutoff_deg,inf
+All fly balls,false_negative_rate,0.01459563127350619
+All fly balls,false_positive_rate,0.2590136439652804
+All fly balls,n_reached_fence_in_flight,104916.0
+All fly balls,n_landed_before_fence,142724.0
+All fly balls,n_trajectory_limit,0.0
+All fly balls,median_nathan_running_var_ft,-20.965613270590893
+All fly balls,median_prior_trig_running_var_ft,-53.19651549552014
+All fly balls,correlation_nathan_vs_prior_trig,0.6461832272569785
+HR launch angle <= median,n_within_pm_1ft,1133.0
+HR launch angle <= median,hr_share_within_pm_1ft,0.12003530450132392
+HR launch angle <= median,hr_share_left_within_pm_1ft,0.11846689895470383
+HR launch angle <= median,hr_share_right_within_pm_1ft,0.12164579606440072
+HR launch angle <= median,n_within_pm_2ft,2285.0
+HR launch angle <= median,hr_share_within_pm_2ft,0.12078774617067833
+HR launch angle <= median,hr_share_left_within_pm_2ft,0.10850694444444445
+HR launch angle <= median,hr_share_right_within_pm_2ft,0.13327449249779347
+HR launch angle <= median,n_within_pm_5ft,5706.0
+HR launch angle <= median,hr_share_within_pm_5ft,0.1275849982474588
+HR launch angle <= median,hr_share_left_within_pm_5ft,0.0882768361581921
+HR launch angle <= median,hr_share_right_within_pm_5ft,0.1663187195546277
+HR launch angle <= median,n_within_pm_10ft,11171.0
+HR launch angle <= median,hr_share_within_pm_10ft,0.1446602810849521
+HR launch angle <= median,hr_share_left_within_pm_10ft,0.06859135826390235
+HR launch angle <= median,hr_share_right_within_pm_10ft,0.20998336106489185
+HR launch angle <= median,n_within_pm_20ft,21656.0
+HR launch angle <= median,hr_share_within_pm_20ft,0.19297192463982268
+HR launch angle <= median,hr_share_left_within_pm_20ft,0.045963141728828434
+HR launch angle <= median,hr_share_right_within_pm_20ft,0.29984051036682613
+HR launch angle <= median,n_observations,61783.0
+HR launch angle <= median,n_home_runs,21565.0
+HR launch angle <= median,home_run_launch_angle_cutoff_deg,29.0
+HR launch angle <= median,false_negative_rate,0.020032460004637143
+HR launch angle <= median,false_positive_rate,0.37503108061067186
+HR launch angle <= median,n_reached_fence_in_flight,40776.0
+HR launch angle <= median,n_landed_before_fence,21007.0
+HR launch angle <= median,n_trajectory_limit,0.0
+HR launch angle <= median,median_nathan_running_var_ft,9.009027420095098
+HR launch angle <= median,median_prior_trig_running_var_ft,-14.266967865949002
+HR launch angle <= median,correlation_nathan_vs_prior_trig,0.931168549563995
+HR launch angle <= Q1,n_within_pm_1ft,630.0
+HR launch angle <= Q1,hr_share_within_pm_1ft,0.1365079365079365
+HR launch angle <= Q1,hr_share_left_within_pm_1ft,0.1365079365079365
+HR launch angle <= Q1,hr_share_right_within_pm_1ft,0.1365079365079365
+HR launch angle <= Q1,n_within_pm_2ft,1293.0
+HR launch angle <= Q1,hr_share_within_pm_2ft,0.12451662799690642
+HR launch angle <= Q1,hr_share_left_within_pm_2ft,0.11076443057722309
+HR launch angle <= Q1,hr_share_right_within_pm_2ft,0.13803680981595093
+HR launch angle <= Q1,n_within_pm_5ft,3238.0
+HR launch angle <= Q1,hr_share_within_pm_5ft,0.14021000617665225
+HR launch angle <= Q1,hr_share_left_within_pm_5ft,0.09394703656998739
+HR launch angle <= Q1,hr_share_right_within_pm_5ft,0.18462469733656175
+HR launch angle <= Q1,n_within_pm_10ft,6327.0
+HR launch angle <= Q1,hr_share_within_pm_10ft,0.16374269005847952
+HR launch angle <= Q1,hr_share_left_within_pm_10ft,0.07649318896262662
+HR launch angle <= Q1,hr_share_right_within_pm_10ft,0.23585450346420322
+HR launch angle <= Q1,n_within_pm_20ft,12062.0
+HR launch angle <= Q1,hr_share_within_pm_20ft,0.22210247056872823
+HR launch angle <= Q1,hr_share_left_within_pm_20ft,0.05413223140495868
+HR launch angle <= Q1,hr_share_right_within_pm_20ft,0.33467183605649403
+HR launch angle <= Q1,n_observations,31212.0
+HR launch angle <= Q1,n_home_runs,11881.0
+HR launch angle <= Q1,home_run_launch_angle_cutoff_deg,26.0
+HR launch angle <= Q1,false_negative_rate,0.02255702381954381
+HR launch angle <= Q1,false_positive_rate,0.40960115876054004
+HR launch angle <= Q1,n_reached_fence_in_flight,22088.0
+HR launch angle <= Q1,n_landed_before_fence,9124.0
+HR launch angle <= Q1,n_trajectory_limit,0.0
+HR launch angle <= Q1,median_nathan_running_var_ft,11.259495003907212
+HR launch angle <= Q1,median_prior_trig_running_var_ft,-11.133876505578993
+HR launch angle <= Q1,correlation_nathan_vs_prior_trig,0.9186037074957079
